@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}User Details{% endblock %}
+
+{% block content %}
+  <div class="space-y-6 p-6 lg:p-8">
+    <div class="rounded-3xl border border-slate-700 bg-slate-950/80 p-6 shadow-xl shadow-slate-950/20">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-sm uppercase tracking-[0.24em] text-cyan-300/80">User Details</p>
+          <h2 class="mt-2 text-3xl font-semibold text-white">{{ user.name }}</h2>
+        </div>
+        <div class="space-x-3">
+          <a href="{{ url_for('users') }}" class="inline-flex rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300">Back to users</a>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Account</p>
+          <dl class="mt-4 space-y-4 text-slate-200">
+            <div>
+              <dt class="text-sm text-slate-400">Email</dt>
+              <dd class="mt-1 text-lg">{{ user.email }}</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-slate-400">Phone</dt>
+              <dd class="mt-1 text-lg">{{ user.phone }}</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-slate-400">Plan Type</dt>
+              <dd class="mt-1 text-lg capitalize">{{ user.plan_type }}</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-slate-400">Status</dt>
+              <dd class="mt-1 text-lg">
+                <span class="inline-flex rounded-full px-3 py-1 text-sm font-semibold {% if user.status == 'Active' %}bg-emerald-500/15 text-emerald-200{% else %}bg-rose-500/15 text-rose-200{% endif %}">{{ user.status }}</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Expiry</p>
+          <div class="mt-4 space-y-4 text-slate-200">
+            <div>
+              <p class="text-sm text-slate-400">Expiry Date</p>
+              <p class="mt-1 text-lg">{{ user.expiry_date }}</p>
+            </div>
+            <div>
+              <p class="text-sm text-slate-400">Created At</p>
+              <p class="mt-1 text-lg">{{ user.created_at }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+        <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Timeline</p>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-3xl bg-slate-950/70 p-4">
+            <p class="text-sm text-slate-400">Trial Start</p>
+            <p class="mt-1 text-lg">{{ user.trial_start_date or 'N/A' }}</p>
+          </div>
+          <div class="rounded-3xl bg-slate-950/70 p-4">
+            <p class="text-sm text-slate-400">Trial End</p>
+            <p class="mt-1 text-lg">{{ user.trial_end_date or 'N/A' }}</p>
+          </div>
+          <div class="rounded-3xl bg-slate-950/70 p-4">
+            <p class="text-sm text-slate-400">Subscription Start</p>
+            <p class="mt-1 text-lg">{{ user.subscription_start_date or 'N/A' }}</p>
+          </div>
+          <div class="rounded-3xl bg-slate-950/70 p-4">
+            <p class="text-sm text-slate-400">Subscription End</p>
+            <p class="mt-1 text-lg">{{ user.subscription_end_date or 'N/A' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

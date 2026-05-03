@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel - {% block title %}{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <div class="min-h-screen md:flex">
+      <aside class="w-full border-b border-slate-800 bg-slate-950/95 md:w-72 md:min-h-screen md:border-r md:border-b-0">
+        <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-8">
+          <div>
+            <a href="{{ url_for('dashboard') }}" class="inline-flex items-center gap-3 text-xl font-semibold text-white">
+              <span class="inline-block h-10 w-10 rounded-3xl bg-cyan-500/20 text-center leading-10 text-cyan-300">A</span>
+              Admin Panel
+            </a>
+          </div>
+          <nav class="space-y-2 text-sm font-medium text-slate-300">
+            <a href="{{ url_for('dashboard') }}" class="block rounded-3xl px-4 py-3 transition hover:bg-slate-900 hover:text-white {% if request.endpoint == 'dashboard' %}bg-slate-900 text-white{% endif %}">Dashboard</a>
+            <a href="{{ url_for('users') }}" class="block rounded-3xl px-4 py-3 transition hover:bg-slate-900 hover:text-white {% if request.endpoint == 'users' %}bg-slate-900 text-white{% endif %}">Users</a>
+            <a href="{{ url_for('subscriptions') }}" class="block rounded-3xl px-4 py-3 transition hover:bg-slate-900 hover:text-white {% if request.endpoint == 'subscriptions' %}bg-slate-900 text-white{% endif %}">Subscriptions</a>
+            
+            <div class="pt-4 pb-2 px-4 text-xs font-bold uppercase tracking-widest text-slate-500">API Configuration</div>
+            <a href="{{ url_for('razorpay_settings') }}" class="block rounded-3xl px-4 py-3 transition hover:bg-slate-900 hover:text-white {% if request.endpoint == 'razorpay_settings' %}bg-slate-900 text-white{% endif %}">
+              <span class="mr-2">💳</span> Razorpay
+            </a>
+            <a href="{{ url_for('google_settings') }}" class="block rounded-3xl px-4 py-3 transition hover:bg-slate-900 hover:text-white {% if request.endpoint == 'google_settings' %}bg-slate-900 text-white{% endif %}">
+              <span class="mr-2">🔑</span> Google Auth
+            </a>
+          </nav>
+          <div class="mt-auto space-y-3">
+            <a href="{{ url_for('logout') }}" class="inline-flex w-full items-center justify-center rounded-3xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-200 transition hover:border-rose-500 hover:text-rose-300">Logout</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="flex-1 bg-slate-950/90">
+        <header class="border-b border-slate-800 bg-slate-950/90 px-6 py-4 text-slate-300 shadow-sm shadow-slate-950/20 md:px-8">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Welcome back</p>
+              <h1 class="text-2xl font-semibold text-white">Admin Dashboard</h1>
+            </div>
+            <p class="text-sm text-slate-400">API powered SaaS administration.</p>
+          </div>
+        </header>
+
+        <div class="min-h-[calc(100vh-96px)] bg-slate-950/80 p-6 md:p-8">
+          {% block content %}{% endblock %}
+        </div>
+
+        <footer class="border-t border-slate-800 bg-slate-950/90 px-6 py-4 text-xs text-slate-500 md:px-8">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <span>© {{ current_year }} Admin Panel</span>
+            <span>Built for the Lerzo SaaS ecosystem</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

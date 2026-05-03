@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+  <div class="p-6 lg:p-8">
+    <div class="rounded-3xl border border-rose-500/20 bg-rose-500/5 p-8 shadow-xl shadow-rose-500/10">
+      <div class="flex items-center gap-4">
+        <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-rose-500/20 text-rose-300">
+          !
+        </div>
+        <div>
+          <p class="text-sm uppercase tracking-[0.24em] text-rose-300">Connection Error</p>
+          <h1 class="mt-2 text-3xl font-semibold text-white">Unable to connect to API server</h1>
+        </div>
+      </div>
+      <div class="mt-6 text-slate-300">
+        <p>{{ error }}</p>
+        <p class="mt-4 text-sm text-slate-500">Check your API_BASE_URL and ensure the main SaaS application is running.</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="{{ url_for('logout') }}" class="rounded-2xl bg-slate-900 px-5 py-3 text-sm text-cyan-300 transition hover:bg-slate-800">Return to login</a>
+        <a href="{{ url_for('dashboard') }}" class="rounded-2xl border border-slate-700 px-5 py-3 text-sm text-slate-300 transition hover:border-cyan-400">Retry</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
