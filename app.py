@@ -1,7 +1,7 @@
 import os
 import datetime
 import re
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 
 # Load environment variables
 try:
@@ -30,10 +30,11 @@ def call_api(endpoint, method='GET', data=None):
         'Content-Type': 'application/json'
     }
     try:
-        if method == 'POST':
-            response = requests.post(url, json=data, headers=headers, timeout=10)
+        # Use requests.request to support GET, POST, PUT, DELETE, etc.
+        if method in ['POST', 'PUT', 'PATCH']:
+            response = requests.request(method, url, json=data, headers=headers, timeout=10)
         else:
-            response = requests.get(url, params=data, headers=headers, timeout=10)
+            response = requests.request(method, url, params=data, headers=headers, timeout=10)
         
         if response.status_code == 200:
             return response.json()
@@ -143,6 +144,28 @@ def users():
         active_page="users",
     )
 
+@app.route("/user/<int:user_id>")
+@login_required
+def user_detail(user_id):
+    """View details of a single user."""
+    result = call_api(f"users/{user_id}")
+    if not result.get("success"):
+        return render_template("error.html", error=result.get("error")), 404
+
+    return render_template(
+        "user_detail.html",
+        user=result.get("user"),
+        active_page="users"
+    )
+
+@app.route("/user/update-status", methods=["POST"])
+@login_required
+def user_update_status():
+    """Update user subscription status via API."""
+    data = request.get_json()
+    result = call_api("update-user", "POST", data)
+    return jsonify(result)
+
 @app.route("/subscriptions", methods=["GET", "POST"])
 @login_required
 def subscriptions():
@@ -165,6 +188,33 @@ def subscriptions():
         plans=result.get("plans", []),
         active_page="subscriptions"
     )
+
+@app.route("/subscriptions/<int:plan_id>/edit", methods=["POST"])
+@login_required
+def subscriptions_edit(plan_id):
+    """Edit a subscription plan via API."""
+    data = {
+        "name": request.form.get("name"),
+        "price": float(request.form.get("price", 0)),
+        "duration_days": int(request.form.get("duration", 30))
+    }
+    result = call_api(f"subscriptions/{plan_id}", "PUT", data)
+    if result.get("success"):
+        flash("Subscription plan updated!", "success")
+    else:
+        flash(result.get("error"), "danger")
+    return redirect(url_for("subscriptions"))
+
+@app.route("/subscriptions/<int:plan_id>/delete", methods=["POST"])
+@login_required
+def subscriptions_delete(plan_id):
+    """Delete a subscription plan via API."""
+    result = call_api(f"subscriptions/{plan_id}", "DELETE")
+    if result.get("success"):
+        flash("Subscription plan deleted!", "success")
+    else:
+        flash(result.get("error"), "danger")
+    return redirect(url_for("subscriptions"))
 
 @app.route("/api/search-users")
 @login_required
