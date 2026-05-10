@@ -166,8 +166,6 @@ def user_update_status():
     result = call_api("update-user", "POST", data)
     return jsonify(result)
 
-<<<<<<< HEAD
-=======
 @app.route("/user/<int:user_id>/delete", methods=["POST"])
 @login_required
 def user_delete(user_id):
@@ -179,7 +177,6 @@ def user_delete(user_id):
         flash(result.get("error"), "danger")
     return redirect(url_for("users"))
 
->>>>>>> e1bd778 (update-admin-0.0.0.1)
 @app.route("/subscriptions", methods=["GET", "POST"])
 @login_required
 def subscriptions():
@@ -301,8 +298,6 @@ def google_settings():
 def utility_processor():
     return {"current_year": datetime.date.today().year}
 
-<<<<<<< HEAD
-=======
 @app.route("/leads")
 @login_required
 def leads():
@@ -328,6 +323,5 @@ def lead_delete(lead_id):
         flash(result.get("error"), "danger")
     return redirect(url_for("leads"))
 
->>>>>>> e1bd778 (update-admin-0.0.0.1)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=True)

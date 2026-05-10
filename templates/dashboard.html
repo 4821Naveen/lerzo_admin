@@ -1,49 +1,6 @@
 {% extends 'base.html' %}
 
 {% block title %}Dashboard{% endblock %}
-<<<<<<< HEAD
-
-{% block content %}
-  <div class="space-y-6 p-6 lg:p-8">
-    <div class="rounded-3xl border border-slate-700 bg-slate-950/80 p-6 shadow-xl shadow-slate-950/20">
-      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p class="text-sm uppercase tracking-[0.24em] text-cyan-300/80">Overview</p>
-          <h2 class="mt-2 text-3xl font-semibold text-white">Dashboard</h2>
-        </div>
-        <p class="text-sm text-slate-400">Welcome back, Admin. Review active users and subscription health.</p>
-      </div>
-
-      <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-        <article class="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-sm shadow-slate-950/10 transition hover:-translate-y-1">
-          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Total Revenue</p>
-          <p class="mt-4 text-3xl font-bold text-emerald-400">₹{{ "{:,.2f}".format(stats.total_revenue or 0) }}</p>
-        </article>
-        <article class="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-sm shadow-slate-950/10 transition hover:-translate-y-1">
-          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Total Users</p>
-          <p class="mt-4 text-3xl font-semibold text-white">{{ stats.total_users }}</p>
-        </article>
-        <article class="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-sm shadow-slate-950/10 transition hover:-translate-y-1">
-          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Trial Users</p>
-          <p class="mt-4 text-3xl font-semibold text-white">{{ stats.total_trial }}</p>
-        </article>
-        <article class="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-sm shadow-slate-950/10 transition hover:-translate-y-1">
-          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Paid Users</p>
-          <p class="mt-4 text-3xl font-semibold text-white">{{ stats.total_paid }}</p>
-        </article>
-        <article class="rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-sm shadow-slate-950/10 transition hover:-translate-y-1">
-          <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Active Subs</p>
-          <p class="mt-4 text-3xl font-semibold text-white">{{ stats.active_subscriptions }}</p>
-        </article>
-      </div>
-
-      <div class="mt-6 rounded-3xl border border-slate-800 bg-slate-900/80 p-5 text-slate-400">
-        <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Expired Users</p>
-        <p class="mt-2 text-3xl font-semibold text-rose-300">{{ stats.expired_users }}</p>
-      </div>
-    </div>
-  </div>
-=======
 {% block header %}Overview Dashboard{% endblock %}
 
 {% block content %}
@@ -169,5 +126,4 @@
         </div>
     </div>
 </div>
->>>>>>> e1bd778 (update-admin-0.0.0.1)
 {% endblock %}

@@ -1,74 +1,6 @@
 {% extends "base.html" %}
 
 {% block title %}Razorpay Settings{% endblock %}
-<<<<<<< HEAD
-
-{% block content %}
-<div class="max-w-4xl">
-  <div class="mb-8">
-    <h2 class="text-3xl font-bold text-white">Razorpay API Configuration</h2>
-    <p class="mt-2 text-slate-400">Configure your payment gateway credentials for processing SaaS subscriptions.</p>
-  </div>
-
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <div class="mb-6 rounded-2xl p-4 {% if category == 'success' %}bg-emerald-500/10 text-emerald-400 border border-emerald-500/20{% else %}bg-rose-500/10 text-rose-400 border border-rose-500/20{% endif %}">
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
-
-  <div class="rounded-3xl border border-slate-800 bg-slate-900/50 p-8 shadow-2xl backdrop-blur-sm">
-    <form method="POST" class="space-y-6">
-      <div class="mb-8 rounded-2xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center transition hover:border-cyan-500/50 hover:bg-slate-900/80">
-        <label for="csv_upload" class="cursor-pointer">
-          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-          </div>
-          <h3 class="mt-4 text-sm font-semibold text-slate-200">Upload Razorpay CSV</h3>
-          <p class="mt-1 text-xs text-slate-400">Upload the credentials CSV file downloaded from Razorpay to auto-fill the fields below.</p>
-        </label>
-        <input type="file" id="csv_upload" accept=".csv" class="hidden" />
-      </div>
-
-      <div class="grid gap-6">
-        <div class="space-y-2">
-          <label for="razorpay_key_id" class="text-sm font-semibold text-slate-300">Razorpay Key ID</label>
-          <input type="text" id="razorpay_key_id" name="razorpay_key_id" 
-                 value="{{ settings.razorpay_key_id if settings and settings.razorpay_key_id else '' }}"
-                 placeholder="rzp_test_..."
-                 class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-white transition focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500" 
-                 required />
-        </div>
-
-        <div class="space-y-2">
-          <label for="razorpay_secret" class="text-sm font-semibold text-slate-300">Razorpay Secret Key</label>
-          <input type="text" id="razorpay_secret" name="razorpay_secret" 
-                 value="{{ settings.razorpay_secret if settings and settings.razorpay_secret else '' }}"
-                 placeholder="••••••••••••••••"
-                 class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-white transition focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500" 
-                 required />
-        </div>
-
-        <div class="space-y-2">
-          <label for="webhook_secret" class="text-sm font-semibold text-slate-300">Razorpay Webhook Secret</label>
-          <input type="password" id="webhook_secret" name="webhook_secret" 
-                 value="{{ settings.webhook_secret if settings and settings.webhook_secret else '' }}"
-                 placeholder="••••••••••••••••"
-                 class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-white transition focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500" />
-        </div>
-      </div>
-
-      <div class="pt-4">
-        <button type="submit" class="w-full md:w-auto rounded-3xl bg-cyan-600 px-8 py-3 font-semibold text-white transition hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900">
-          Save Razorpay Settings
-        </button>
-      </div>
-    </form>
-  </div>
-=======
 {% block header %}Payment Configuration{% endblock %}
 
 {% block content %}
@@ -161,7 +93,6 @@
         </div>
         <div class="absolute -right-16 -top-16 w-48 h-48 bg-accent/20 rounded-full blur-3xl"></div>
     </div>
->>>>>>> e1bd778 (update-admin-0.0.0.1)
 </div>
 
 <script>
@@ -172,42 +103,17 @@ document.getElementById('csv_upload').addEventListener('change', function(e) {
   const reader = new FileReader();
   reader.onload = function(event) {
     const text = event.target.result;
-<<<<<<< HEAD
-    // Typical Razorpay CSV has headers: "Key Id", "Key Secret"
-    // Usually on the second row
-    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-    
-    if (lines.length >= 2) {
-      // Split the second line by comma
-      const cols = lines[1].split(',');
-      if (cols.length >= 2) {
-        // Remove quotes if present
-=======
     const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
     
     if (lines.length >= 2) {
       const cols = lines[1].split(',');
       if (cols.length >= 2) {
->>>>>>> e1bd778 (update-admin-0.0.0.1)
         const keyId = cols[0].replace(/['"]/g, '').trim();
         const keySecret = cols[1].replace(/['"]/g, '').trim();
         
         document.getElementById('razorpay_key_id').value = keyId;
         document.getElementById('razorpay_secret').value = keySecret;
         
-<<<<<<< HEAD
-        // Optional: show a quick success message or flash the inputs
-        const keyInput = document.getElementById('razorpay_key_id');
-        const secretInput = document.getElementById('razorpay_secret');
-        
-        keyInput.style.borderColor = '#10b981';
-        secretInput.style.borderColor = '#10b981';
-        
-        setTimeout(() => {
-          keyInput.style.borderColor = '';
-          secretInput.style.borderColor = '';
-        }, 2000);
-=======
         // Show success animation
         document.querySelectorAll('input').forEach(input => {
             if(input.id.startsWith('razorpay')) {
@@ -217,7 +123,6 @@ document.getElementById('csv_upload').addEventListener('change', function(e) {
                 }, 2000);
             }
         });
->>>>>>> e1bd778 (update-admin-0.0.0.1)
       }
     }
   };
