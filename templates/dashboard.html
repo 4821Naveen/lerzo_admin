@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}Dashboard{% endblock %}
+<<<<<<< HEAD
 
 {% block content %}
   <div class="space-y-6 p-6 lg:p-8">
@@ -42,4 +43,131 @@
       </div>
     </div>
   </div>
+=======
+{% block header %}Overview Dashboard{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- KPI Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
+        
+        <!-- Total Revenue -->
+        <div class="card col-span-1 md:col-span-2 bg-gradient-to-br from-blue-600 to-blue-700 !text-white border-none shadow-xl shadow-blue-500/20">
+            <div class="flex justify-between items-start mb-6">
+                <div class="p-3 bg-white/10 rounded-2xl">
+                    <i data-lucide="banknote" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] bg-white/20 px-3 py-1 rounded-full">Lifetime Revenue</span>
+            </div>
+            <h3 class="text-blue-100 font-bold text-sm mb-1 uppercase tracking-wider">Total Revenue</h3>
+            <div class="text-4xl font-black tracking-tighter">
+                ₹{{ "{:,.2f}".format(stats.total_revenue or 0) }}
+            </div>
+            <div class="mt-4 flex items-center gap-2 text-blue-100 text-xs font-medium">
+                <i data-lucide="trending-up" class="w-3 h-3"></i>
+                <span>Platform growth active</span>
+            </div>
+        </div>
+
+        <!-- Total Users -->
+        <div class="card">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-3 bg-blue-50 rounded-2xl">
+                    <i data-lucide="users" class="w-6 h-6 text-accent"></i>
+                </div>
+            </div>
+            <h3 class="text-gray-400 font-bold text-[10px] mb-1 uppercase tracking-[0.2em]">Total Users</h3>
+            <div class="text-3xl font-black text-gray-900">{{ stats.total_users }}</div>
+            <div class="mt-2 text-[10px] font-bold text-green-500 uppercase tracking-widest flex items-center gap-1">
+                <div class="w-1 h-1 rounded-full bg-green-500"></div>
+                Registered
+            </div>
+        </div>
+
+        <!-- Trial Users -->
+        <div class="card">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-3 bg-amber-50 rounded-2xl">
+                    <i data-lucide="clock" class="w-6 h-6 text-amber-500"></i>
+                </div>
+            </div>
+            <h3 class="text-gray-400 font-bold text-[10px] mb-1 uppercase tracking-[0.2em]">Trial Users</h3>
+            <div class="text-3xl font-black text-gray-900">{{ stats.total_trial }}</div>
+            <div class="mt-2 text-[10px] font-bold text-amber-500 uppercase tracking-widest flex items-center gap-1">
+                Evaluating
+            </div>
+        </div>
+
+        <!-- Paid Users -->
+        <div class="card">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-3 bg-emerald-50 rounded-2xl">
+                    <i data-lucide="award" class="w-6 h-6 text-emerald-500"></i>
+                </div>
+            </div>
+            <h3 class="text-gray-400 font-bold text-[10px] mb-1 uppercase tracking-[0.2em]">Paid Users</h3>
+            <div class="text-3xl font-black text-gray-900">{{ stats.total_paid }}</div>
+            <div class="mt-2 text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-1">
+                Active Subscriptions
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Secondary Stats -->
+        <div class="card">
+            <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <i data-lucide="activity" class="w-5 h-5 text-accent"></i>
+                System Health
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        <span class="text-sm font-bold text-gray-700">API Connection</span>
+                    </div>
+                    <span class="text-[10px] font-black text-green-600 bg-green-100 px-2 py-1 rounded-md uppercase">Healthy</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                        <span class="text-sm font-bold text-gray-700">Active Subscriptions</span>
+                    </div>
+                    <span class="text-sm font-black text-gray-900">{{ stats.active_subscriptions }}</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-rose-500"></div>
+                        <span class="text-sm font-bold text-gray-700">Expired Accounts</span>
+                    </div>
+                    <span class="text-sm font-black text-rose-600">{{ stats.expired_users }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card bg-gray-900 !text-white border-none relative overflow-hidden">
+            <div class="relative z-10">
+                <h3 class="text-lg font-bold mb-6">Quick Management</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="{{ url_for('users') }}" class="p-4 bg-white/10 rounded-2xl hover:bg-white/20 transition-all flex flex-col gap-3 group">
+                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-sm font-bold">Review Users</span>
+                    </a>
+                    <a href="{{ url_for('subscriptions') }}" class="p-4 bg-white/10 rounded-2xl hover:bg-white/20 transition-all flex flex-col gap-3 group">
+                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="settings-2" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-sm font-bold">Edit Plans</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Background Decoration -->
+            <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"></div>
+        </div>
+    </div>
+</div>
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 {% endblock %}

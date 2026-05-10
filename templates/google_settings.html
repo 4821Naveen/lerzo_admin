@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+<<<<<<< HEAD
 {% block title %}Google Auth Settings{% endblock %}
 
 {% block content %}
@@ -125,12 +126,159 @@
 {% endblock %}
 
 {% block extra_js %}
+=======
+{% block title %}Authentication Settings{% endblock %}
+{% block header %}System Access Config{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in max-w-5xl mx-auto space-y-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-2xl font-black text-gray-900 tracking-tight">Google & Firebase</h2>
+            <p class="text-sm text-gray-500 font-medium">Configure global authentication parameters for the SaaS ecosystem.</p>
+        </div>
+        <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center">
+            <i data-lucide="key" class="w-6 h-6 text-accent"></i>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-5 gap-8">
+        <!-- Main Form Column -->
+        <div class="xl:col-span-3 space-y-8">
+            <!-- Firebase Config Parser -->
+            <div class="card">
+                <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                    <i data-lucide="code-2" class="w-5 h-5 text-accent"></i>
+                    Auto-Parser
+                </h3>
+                <div class="space-y-4">
+                    <p class="text-xs text-gray-500 font-medium leading-relaxed">
+                        Paste your Firebase SDK configuration object below. The system will automatically extract the required parameters.
+                    </p>
+                    <textarea id="firebase_config_raw" rows="6"
+                        placeholder='{ "apiKey": "...", "authDomain": "...", ... }'
+                        class="w-full p-4 bg-gray-50 border border-gray-100 rounded-2xl text-xs font-mono font-medium outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all resize-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Parameters -->
+            <div class="card">
+                <form method="POST" class="space-y-8">
+                    <h3 class="text-lg font-bold text-gray-900 mb-6">Credential Details</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2 space-y-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Firebase API Key</label>
+                            <input type="text" id="firebase_api_key" name="firebase_api_key" 
+                                value="{{ settings.firebase_api_key if settings and settings.firebase_api_key else '' }}"
+                                class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-gray-400 cursor-not-allowed" readonly />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Project ID</label>
+                            <input type="text" id="firebase_project_id" name="firebase_project_id" 
+                                value="{{ settings.firebase_project_id if settings and settings.firebase_project_id else '' }}"
+                                class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-gray-400 cursor-not-allowed" readonly />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Auth Domain</label>
+                            <input type="text" id="firebase_auth_domain" name="firebase_auth_domain" 
+                                value="{{ settings.firebase_auth_domain if settings and settings.firebase_auth_domain else '' }}"
+                                class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-gray-400 cursor-not-allowed" readonly />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Google Client ID</label>
+                            <input type="text" id="google_client_id" name="google_client_id" 
+                                value="{{ settings.google_client_id if settings and settings.google_client_id else '' }}"
+                                placeholder="12345-abc.apps..."
+                                class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Client Secret</label>
+                            <input type="password" id="google_client_secret" name="google_client_secret" 
+                                value="{{ settings.google_client_secret if settings and settings.google_client_secret else '' }}"
+                                placeholder="••••••••"
+                                class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Service Account JSON</label>
+                            <label for="firebase_json_upload" class="flex items-center gap-2 px-3 py-1.5 bg-accent-light text-accent rounded-lg text-[10px] font-black uppercase tracking-widest cursor-pointer hover:bg-accent hover:text-white transition-all">
+                                <i data-lucide="upload" class="w-3 h-3"></i>
+                                Upload JSON
+                            </label>
+                            <input type="file" id="firebase_json_upload" accept=".json" class="hidden" />
+                        </div>
+                        <textarea id="firebase_service_account" name="firebase_service_account" rows="8"
+                            placeholder="Paste JSON for server-side verification..."
+                            class="w-full p-4 bg-gray-900 text-cyan-400 border-none rounded-2xl text-[10px] font-mono leading-relaxed outline-none focus:ring-4 focus:ring-accent/10 transition-all resize-none shadow-inner">{{ settings.firebase_service_account if settings and settings.firebase_service_account else '' }}</textarea>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-50">
+                        <button type="submit" class="h-14 px-10 bg-accent text-white rounded-2xl font-black text-sm hover:bg-accent-hover active:scale-[0.98] transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+                            <i data-lucide="save" class="w-5 h-5"></i>
+                            Save Integration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="xl:col-span-2 space-y-8">
+            <div class="card bg-gray-900 !text-white border-none relative overflow-hidden group">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-white/10 rounded-xl text-accent">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold">Security Compliance</h4>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed font-medium">
+                        These credentials enable <span class="text-white font-bold">Google Identity Platform</span> services across your SaaS. 
+                        Ensure the Service Account has the <span class="text-accent font-bold">Firebase Admin</span> role enabled in Google Cloud Console.
+                    </p>
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-center gap-2 text-xs font-bold text-gray-300">
+                            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                            JWT Token Verification
+                        </li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-gray-300">
+                            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                            Secure OAuth 2.0 Flow
+                        </li>
+                    </ul>
+                </div>
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="card border-amber-100 bg-amber-50/30">
+                <h4 class="text-amber-600 font-black text-[10px] uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-4 h-4"></i>
+                    Configuration Logic
+                </h4>
+                <p class="text-xs text-amber-700 font-medium leading-relaxed">
+                    The Main SaaS App will automatically detect these settings. If the API Key is invalid, the 
+                    <span class="font-bold">"Continue with Google"</span> button will be safely disabled to prevent broken user flows.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 <script>
 document.getElementById('firebase_config_raw').addEventListener('input', function(e) {
     const rawValue = e.target.value.trim();
     if (!rawValue) return;
 
     try {
+<<<<<<< HEAD
         // Try parsing as JSON first
         let config;
         try {
@@ -157,16 +305,35 @@ document.getElementById('firebase_config_raw').addEventListener('input', functio
                 appId: extract('appId')
             };
         }
+=======
+        const extract = (key) => {
+            const match = rawValue.match(new RegExp(`${key}\\s*:\\s*["']([^"']+)["']`));
+            return match ? match[1] : null;
+        };
+
+        const config = {
+            apiKey: extract('apiKey'),
+            authDomain: extract('authDomain'),
+            projectId: extract('projectId'),
+            appId: extract('appId')
+        };
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 
         if (config.apiKey) document.getElementById('firebase_api_key').value = config.apiKey;
         if (config.projectId) document.getElementById('firebase_project_id').value = config.projectId;
         if (config.authDomain) document.getElementById('firebase_auth_domain').value = config.authDomain;
+<<<<<<< HEAD
         if (config.appId) document.getElementById('firebase_app_id').value = config.appId;
         
         // Visual feedback
         if (config.apiKey) {
             e.target.classList.add('border-emerald-500');
             e.target.classList.remove('border-slate-700');
+=======
+        
+        if (config.apiKey) {
+            e.target.classList.add('ring-4', 'ring-emerald-500/10', 'border-emerald-500');
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
         }
     } catch (err) {
         console.error('Parsing error:', err);
@@ -180,6 +347,7 @@ document.getElementById('firebase_json_upload').addEventListener('change', funct
   const reader = new FileReader();
   reader.onload = function(event) {
     try {
+<<<<<<< HEAD
       const text = event.target.result;
       const json = JSON.parse(text); // validate
       
@@ -197,6 +365,14 @@ document.getElementById('firebase_json_upload').addEventListener('change', funct
       
     } catch(err) {
       alert("Invalid JSON file. Please upload a valid Firebase Service Account JSON.");
+=======
+      const json = JSON.parse(event.target.result);
+      const textarea = document.getElementById('firebase_service_account');
+      textarea.value = JSON.stringify(json, null, 2);
+      textarea.classList.add('ring-4', 'ring-emerald-500/10', 'border-emerald-500');
+    } catch(err) {
+      alert("Invalid JSON file.");
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
     }
   };
   reader.readAsText(file);

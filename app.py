@@ -166,6 +166,20 @@ def user_update_status():
     result = call_api("update-user", "POST", data)
     return jsonify(result)
 
+<<<<<<< HEAD
+=======
+@app.route("/user/<int:user_id>/delete", methods=["POST"])
+@login_required
+def user_delete(user_id):
+    """Permanently delete a user and all data via API."""
+    result = call_api(f"users/{user_id}", "DELETE")
+    if result.get("success"):
+        flash("User and all associated data deleted successfully.", "success")
+    else:
+        flash(result.get("error"), "danger")
+    return redirect(url_for("users"))
+
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 @app.route("/subscriptions", methods=["GET", "POST"])
 @login_required
 def subscriptions():
@@ -287,5 +301,33 @@ def google_settings():
 def utility_processor():
     return {"current_year": datetime.date.today().year}
 
+<<<<<<< HEAD
+=======
+@app.route("/leads")
+@login_required
+def leads():
+    """List marketing leads via API."""
+    result = call_api("leads")
+    if not result.get("success"):
+        return render_template("error.html", error=result.get("error")), 500
+        
+    return render_template(
+        "leads.html", 
+        leads=result.get("leads", []),
+        active_page="leads"
+    )
+
+@app.route("/leads/<int:lead_id>/delete", methods=["POST"])
+@login_required
+def lead_delete(lead_id):
+    """Delete a marketing lead via API."""
+    result = call_api(f"leads/{lead_id}", "DELETE")
+    if result.get("success"):
+        flash("Lead deleted successfully.", "success")
+    else:
+        flash(result.get("error"), "danger")
+    return redirect(url_for("leads"))
+
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=True)

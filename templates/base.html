@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -65,4 +66,206 @@
     </script>
     {% block extra_js %}{% endblock %}
   </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - {% block title %}{% endblock %}</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: '#2563EB',
+              'accent-light': '#EFF6FF',
+              'accent-hover': '#1D4ED8',
+            },
+            borderRadius: {
+              '2xl': '16px',
+              '3xl': '20px',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F7F8FA;
+            --border: #E8EAED;
+            --accent: #2563EB;
+            --accent-light: #EFF6FF;
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --text-muted: #9CA3AF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .sidebar-active {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        /* Smooth page transitions */
+        .page-enter {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Modern Cards */
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #F3F4F6;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            border-color: var(--accent-light);
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-gray-50/50 min-h-screen">
+    <div class="flex min-h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-72 bg-white border-r border-gray-100 flex flex-col px-4 py-8 h-screen sticky top-0">
+            <!-- App Logo Section -->
+            <div class="flex items-center gap-3 mb-10 px-4">
+                <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black text-gray-900 tracking-tight">Lerzo Admin</span>
+                    <span class="text-[10px] font-bold text-accent uppercase tracking-widest">Control Panel</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 space-y-2 overflow-y-auto">
+                <p class="px-4 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">Administration</p>
+                
+                <a href="{{ url_for('dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if request.endpoint == 'dashboard' %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    <span class="font-bold text-sm">Dashboard</span>
+                </a>
+
+                <a href="{{ url_for('users') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if 'users' in request.endpoint %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                    <span class="font-bold text-sm">User Management</span>
+                </a>
+
+                <a href="{{ url_for('subscriptions') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if request.endpoint == 'subscriptions' %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                    <i data-lucide="crown" class="w-5 h-5"></i>
+                    <span class="font-bold text-sm">Subscription Plans</span>
+                </a>
+
+                <a href="{{ url_for('leads') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if request.endpoint == 'leads' %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                    <i data-lucide="inbox" class="w-5 h-5"></i>
+                    <span class="font-bold text-sm">Marketing Leads</span>
+                </a>
+
+                <div class="pt-4 mt-4 border-t border-gray-50">
+                    <p class="px-4 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">System Settings</p>
+                    
+                    <a href="{{ url_for('razorpay_settings') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if request.endpoint == 'razorpay_settings' %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                        <i data-lucide="credit-card" class="w-5 h-5"></i>
+                        <span class="font-bold text-sm">Razorpay Config</span>
+                    </a>
+
+                    <a href="{{ url_for('google_settings') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if request.endpoint == 'google_settings' %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                        <i data-lucide="key" class="w-5 h-5"></i>
+                        <span class="font-bold text-sm">Google & Firebase</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="mt-auto border-t border-gray-50 pt-6">
+                <a href="{{ url_for('logout') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-500 hover:bg-rose-50 hover:text-rose-600 transition-all group">
+                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                    <span class="font-bold text-sm">Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto page-enter">
+            <header class="bg-white border-b border-gray-100 px-8 py-6 sticky top-0 z-50">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] font-black text-accent uppercase tracking-[0.2em] mb-1">System Administrator</p>
+                        <h1 class="text-2xl font-bold text-gray-900">{% block header %}{% endblock %}</h1>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col items-end">
+                            <span class="text-sm font-bold text-gray-900">Admin User</span>
+                            <span class="text-[10px] text-gray-500 font-medium">Root Access</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-accent-light flex items-center justify-center text-accent font-bold">
+                            A
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="mb-8 space-y-4">
+                            {% for category, message in messages %}
+                                <div class="px-6 py-4 rounded-2xl border flex items-center gap-4 {% if category == 'danger' or category == 'error' %}bg-rose-50 border-rose-100 text-rose-700{% else %}bg-emerald-50 border-emerald-100 text-emerald-700{% endif %}">
+                                    <i data-lucide="{% if category == 'danger' or category == 'error' %}alert-circle{% else %}check-circle{% endif %}" class="w-5 h-5"></i>
+                                    <p class="text-sm font-bold">{{ message }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                {% block content %}{% endblock %}
+            </div>
+
+            <footer class="px-8 py-6 text-center text-xs font-medium text-gray-400 border-t border-gray-100 mt-auto">
+                &copy; {{ current_year }} Lerzo Admin Panel &bull; Premium SaaS Management
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 </html>

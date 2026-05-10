@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Razorpay Settings{% endblock %}
+<<<<<<< HEAD
 
 {% block content %}
 <div class="max-w-4xl">
@@ -67,6 +68,100 @@
       </div>
     </form>
   </div>
+=======
+{% block header %}Payment Configuration{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in max-w-4xl mx-auto space-y-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-2xl font-black text-gray-900 tracking-tight">Razorpay Gateway</h2>
+            <p class="text-sm text-gray-500 font-medium">Manage your payment keys and webhook secrets for subscription billing.</p>
+        </div>
+        <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center">
+            <i data-lucide="credit-card" class="w-6 h-6 text-accent"></i>
+        </div>
+    </div>
+
+    <div class="card">
+        <form method="POST" class="space-y-10">
+            <!-- CSV Auto-fill Area -->
+            <div class="relative group">
+                <input type="file" id="csv_upload" accept=".csv" class="hidden" />
+                <label for="csv_upload" class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-100 rounded-3xl bg-gray-50/50 hover:bg-accent-light hover:border-accent/20 cursor-pointer transition-all duration-300">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-accent shadow-sm group-hover:scale-110 transition-transform mb-4">
+                        <i data-lucide="upload-cloud" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-gray-900 mb-1">Import from Razorpay CSV</h3>
+                    <p class="text-xs text-gray-500 font-medium text-center max-w-xs leading-relaxed">
+                        Drag and drop or click to upload the credentials file downloaded from your Razorpay Dashboard.
+                    </p>
+                </label>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                <div class="space-y-2">
+                    <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest px-1">Razorpay Key ID</label>
+                    <div class="relative">
+                        <i data-lucide="hash" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                        <input type="text" id="razorpay_key_id" name="razorpay_key_id" 
+                            value="{{ settings.razorpay_key_id if settings and settings.razorpay_key_id else '' }}"
+                            placeholder="rzp_test_..." required
+                            class="w-full h-12 pl-12 pr-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest px-1">Razorpay Secret Key</label>
+                    <div class="relative">
+                        <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                        <input type="text" id="razorpay_secret" name="razorpay_secret" 
+                            value="{{ settings.razorpay_secret if settings and settings.razorpay_secret else '' }}"
+                            placeholder="••••••••••••••••" required
+                            class="w-full h-12 pl-12 pr-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2 md:col-span-2">
+                    <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest px-1">Webhook Secret</label>
+                    <div class="relative">
+                        <i data-lucide="shield-check" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                        <input type="password" id="webhook_secret" name="webhook_secret" 
+                            value="{{ settings.webhook_secret if settings and settings.webhook_secret else '' }}"
+                            placeholder="Used for verifying payment events"
+                            class="w-full h-12 pl-12 pr-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                    </div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-2 px-1">Highly Recommended for accurate billing</p>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-gray-50">
+                <button type="submit" class="h-14 px-10 bg-accent text-white rounded-2xl font-black text-sm hover:bg-accent-hover active:scale-[0.98] transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+                    <i data-lucide="save" class="w-5 h-5"></i>
+                    Sync Credentials
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Help Box -->
+    <div class="bg-gray-900 rounded-[32px] p-8 text-white relative overflow-hidden group">
+        <div class="relative z-10 flex items-start gap-6">
+            <div class="p-3 bg-white/10 rounded-2xl text-yellow-400">
+                <i data-lucide="lightbulb" class="w-6 h-6"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-2">Integration Guide</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Make sure to set your Webhook URL in the Razorpay Dashboard to: 
+                    <code class="bg-white/10 px-2 py-1 rounded text-accent font-mono text-xs">https://your-domain.com/api/webhook</code><br>
+                    Select the <span class="text-white font-bold">payment.captured</span> event to ensure subscriptions are activated automatically.
+                </p>
+            </div>
+        </div>
+        <div class="absolute -right-16 -top-16 w-48 h-48 bg-accent/20 rounded-full blur-3xl"></div>
+    </div>
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 </div>
 
 <script>
@@ -77,6 +172,7 @@ document.getElementById('csv_upload').addEventListener('change', function(e) {
   const reader = new FileReader();
   reader.onload = function(event) {
     const text = event.target.result;
+<<<<<<< HEAD
     // Typical Razorpay CSV has headers: "Key Id", "Key Secret"
     // Usually on the second row
     const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
@@ -86,12 +182,20 @@ document.getElementById('csv_upload').addEventListener('change', function(e) {
       const cols = lines[1].split(',');
       if (cols.length >= 2) {
         // Remove quotes if present
+=======
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    
+    if (lines.length >= 2) {
+      const cols = lines[1].split(',');
+      if (cols.length >= 2) {
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
         const keyId = cols[0].replace(/['"]/g, '').trim();
         const keySecret = cols[1].replace(/['"]/g, '').trim();
         
         document.getElementById('razorpay_key_id').value = keyId;
         document.getElementById('razorpay_secret').value = keySecret;
         
+<<<<<<< HEAD
         // Optional: show a quick success message or flash the inputs
         const keyInput = document.getElementById('razorpay_key_id');
         const secretInput = document.getElementById('razorpay_secret');
@@ -103,6 +207,17 @@ document.getElementById('csv_upload').addEventListener('change', function(e) {
           keyInput.style.borderColor = '';
           secretInput.style.borderColor = '';
         }, 2000);
+=======
+        // Show success animation
+        document.querySelectorAll('input').forEach(input => {
+            if(input.id.startsWith('razorpay')) {
+                input.classList.add('ring-4', 'ring-emerald-500/10', 'border-emerald-500');
+                setTimeout(() => {
+                    input.classList.remove('ring-4', 'ring-emerald-500/10', 'border-emerald-500');
+                }, 2000);
+            }
+        });
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
       }
     }
   };

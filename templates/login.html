@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -40,4 +41,338 @@
       </div>
     </div>
   </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Lerzo</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --accent: #2563eb;
+            --accent-dark: #1e40af;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --bg-light: #f9fafb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .admin-auth-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Left Side: Illustration */
+        .illustration-side {
+            flex: 1;
+            background: #f8faff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-side::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .svg-container {
+            width: 100%;
+            max-width: 480px;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .svg-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Right Side: Form */
+        .form-side {
+            flex: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: #ffffff;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 380px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .admin-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #eff6ff;
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .brand-header h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .brand-header p {
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .flash-messages {
+            margin-bottom: 24px;
+        }
+
+        .flash-error {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: #fef2f2;
+            border: 1px solid #fee2e2;
+            border-radius: 12px;
+            color: #dc2626;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px 0 48px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .input-wrapper input:focus {
+            background: #ffffff;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+            outline: none;
+        }
+
+        .input-wrapper input:focus + i {
+            color: var(--accent);
+        }
+
+        .login-button {
+            width: 100%;
+            height: 48px;
+            background: var(--text-primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-button:hover {
+            background: #000;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .footer-note p {
+            font-size: 12px;
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .illustration-side { display: none; }
+            .form-side { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-auth-container">
+        <!-- Left Side -->
+        <div class="illustration-side">
+            <div class="svg-container">
+                <img src="{{ url_for('static', filename='images/auth-illustration.svg') }}" alt="Lerzo Admin Illustration">
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="form-side">
+            <div class="login-card">
+                <div class="brand-header">
+                    <div class="admin-badge">
+                        <i data-lucide="shield-check"></i>
+                        Secure Admin Access
+                    </div>
+                    <h1>Lerzo Control</h1>
+                    <p>Management & Infrastructure Panel</p>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for category, message in messages %}
+                                <div class="flash-error">
+                                    <i data-lucide="alert-circle"></i>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form method="post">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="user"></i>
+                            <input type="text" name="username" placeholder="admin" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="lock"></i>
+                            <input type="password" name="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        <span>Sign In to Panel</span>
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="footer-note">
+                    <p>
+                        Authorized Personnel Only.<br>
+                        All sessions are logged and monitored.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // Trigger SVG Animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const svg = document.querySelector('svg');
+            if (svg) {
+                window.setTimeout(() => {
+                    svg.classList.add('animated');
+                }, 500);
+            }
+        });
+    </script>
+</body>
+>>>>>>> e1bd778 (update-admin-0.0.0.1)
 </html>
