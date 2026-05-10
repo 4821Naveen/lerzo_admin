@@ -85,6 +85,8 @@
         }
     </style>
     
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/lezo-logo.png') }}">
+    
     {% block extra_css %}{% endblock %}
 </head>
 <body class="bg-gray-50/50 min-h-screen">
@@ -93,8 +95,8 @@
         <aside class="w-72 bg-white border-r border-gray-100 flex flex-col px-4 py-8 h-screen sticky top-0">
             <!-- App Logo Section -->
             <div class="flex items-center gap-3 mb-10 px-4">
-                <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                <div class="w-10 h-10 flex items-center justify-center">
+                    <img src="{{ url_for('static', filename='images/lezo-logo.png') }}" alt="Lerzo Admin" class="w-10 h-10 object-contain">
                 </div>
                 <div class="flex flex-col">
                     <span class="text-xl font-black text-gray-900 tracking-tight">Lerzo Admin</span>
