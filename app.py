@@ -185,7 +185,9 @@ def subscriptions():
         data = {
             "name": request.form.get("name"),
             "price": float(request.form.get("price", 0)),
-            "duration_days": int(request.form.get("duration", 30))
+            "duration_days": int(request.form.get("duration", 30)),
+            "description": request.form.get("description", ""),
+            "features": request.form.get("features", "")
         }
         result = call_api("subscriptions", "POST", data)
         if result.get("success"):
@@ -207,7 +209,9 @@ def subscriptions_edit(plan_id):
     data = {
         "name": request.form.get("name"),
         "price": float(request.form.get("price", 0)),
-        "duration_days": int(request.form.get("duration", 30))
+        "duration_days": int(request.form.get("duration", 30)),
+        "description": request.form.get("description", ""),
+        "features": request.form.get("features", "")
     }
     result = call_api(f"subscriptions/{plan_id}", "PUT", data)
     if result.get("success"):

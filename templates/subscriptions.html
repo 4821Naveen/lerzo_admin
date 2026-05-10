@@ -55,6 +55,18 @@
                         </div>
                     </div>
 
+                    <div>
+                        <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Description</label>
+                        <textarea name="description" placeholder="Short overview of the plan..." 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all h-24 resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Features (One per line)</label>
+                        <textarea name="features" placeholder="Feature 1\nFeature 2\nFeature 3" 
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all h-32 resize-none"></textarea>
+                    </div>
+
                     <button type="submit" class="w-full h-12 bg-accent text-white rounded-xl font-bold text-sm hover:bg-accent-hover transition-all shadow-lg shadow-blue-500/20">
                         Launch Plan
                     </button>
@@ -94,7 +106,7 @@
                                 </td>
                                 <td class="px-8 py-6 text-right">
                                     <div class="flex items-center justify-end gap-2">
-                                        <button onclick="openEditModal({{ plan.id }}, '{{ plan.name }}', {{ plan.price }}, {{ plan.duration_days }})" 
+                                        <button onclick="openEditModal({{ plan.id }}, '{{ plan.name }}', {{ plan.price }}, {{ plan.duration_days }}, '{{ plan.description|replace("'", "\\'")|replace("\n", "\\n") }}', '{{ plan.features|replace("'", "\\'")|replace("\n", "\\n") }}')" 
                                             class="p-2 text-gray-400 hover:text-accent hover:bg-accent-light rounded-lg transition-all">
                                             <i data-lucide="edit-3" class="w-4 h-4"></i>
                                         </button>
@@ -151,6 +163,18 @@
                 </div>
             </div>
 
+            <div>
+                <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Description</label>
+                <textarea id="edit_description" name="description" 
+                    class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all h-24 resize-none"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Features (One per line)</label>
+                <textarea id="edit_features" name="features" 
+                    class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all h-32 resize-none"></textarea>
+            </div>
+
             <div class="flex gap-3 pt-4">
                 <button type="button" onclick="closeEditModal()" class="flex-1 h-12 bg-gray-100 text-gray-600 rounded-xl font-bold text-sm hover:bg-gray-200 transition-all">
                     Discard
@@ -164,13 +188,15 @@
 </div>
 
 <script>
-    function openEditModal(id, name, price, duration) {
+    function openEditModal(id, name, price, duration, description, features) {
         const modal = document.getElementById('editModal');
         const form = document.getElementById('editForm');
         
         document.getElementById('edit_name').value = name;
         document.getElementById('edit_price').value = price;
         document.getElementById('edit_duration').value = duration;
+        document.getElementById('edit_description').value = description;
+        document.getElementById('edit_features').value = features;
         
         form.action = `/subscriptions/${id}/edit`;
         modal.classList.remove('hidden');
