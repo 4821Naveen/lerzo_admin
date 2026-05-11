@@ -33,15 +33,21 @@
                 <form method="POST" class="space-y-6">
                     <div>
                         <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Plan Name</label>
-                        <input type="text" name="name" placeholder="e.g. Premium Monthly" required 
+                        <select name="name" id="plan_name_select" required onchange="updateDefaultValues()"
                             class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                            <option value="" disabled selected>Select a Tier</option>
+                            <option value="Free" id="opt_free">Free</option>
+                            <option value="Monthly" id="opt_monthly">Monthly</option>
+                            <option value="Yearly" id="opt_yearly">Yearly</option>
+                        </select>
+                        <p class="text-[10px] text-gray-400 mt-2 italic">* If a tier is already active, please edit it in the table instead of creating a new one.</p>
                     </div>
 
                     <div>
                         <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Price (INR)</label>
                         <div class="relative">
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">₹</span>
-                            <input type="number" name="price" step="0.01" placeholder="999" required 
+                            <input type="number" name="price" id="plan_price" step="0.01" placeholder="999" required 
                                 class="w-full h-12 pl-8 pr-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
                         </div>
                     </div>
@@ -49,7 +55,7 @@
                     <div>
                         <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Duration (Days)</label>
                         <div class="relative">
-                            <input type="number" name="duration" placeholder="30" required 
+                            <input type="number" name="duration" id="plan_duration" placeholder="30" required 
                                 class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
                             <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] font-black uppercase">Days</span>
                         </div>
@@ -57,7 +63,7 @@
 
                     <div>
                         <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Description</label>
-                        <textarea name="description" placeholder="Short overview of the plan..." 
+                        <textarea name="description" id="plan_description" placeholder="Short overview of the plan..." 
                             class="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all h-24 resize-none"></textarea>
                     </div>
 
@@ -146,8 +152,12 @@
         <form id="editForm" method="POST" class="space-y-6">
             <div>
                 <label class="block text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">Plan Name</label>
-                <input type="text" id="edit_name" name="name" required 
+                <select id="edit_name" name="name" required 
                     class="w-full h-12 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold outline-none focus:ring-4 focus:ring-accent/5 focus:border-accent transition-all">
+                    <option value="Free">Free</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                </select>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
@@ -188,6 +198,27 @@
 </div>
 
 <script>
+    function updateDefaultValues() {
+        const name = document.getElementById('plan_name_select').value;
+        const priceInput = document.getElementById('plan_price');
+        const durationInput = document.getElementById('plan_duration');
+        const descInput = document.getElementById('plan_description');
+        
+        if (name === 'Free') {
+            priceInput.value = 0;
+            durationInput.value = 14;
+            descInput.value = "Experience the core features of Lerzo for a limited trial period. Perfect for getting started.";
+        } else if (name === 'Monthly') {
+            priceInput.value = 499;
+            durationInput.value = 30;
+            descInput.value = "Full access to all Lerzo features with the flexibility of monthly billing. Ideal for growing centres.";
+        } else if (name === 'Yearly') {
+            priceInput.value = 4999;
+            durationInput.value = 365;
+            descInput.value = "Maximize your value with our most popular plan. All features included with a significant annual discount.";
+        }
+    }
+
     function openEditModal(id, name, price, duration, description, features) {
         const modal = document.getElementById('editModal');
         const form = document.getElementById('editForm');
@@ -208,6 +239,14 @@
         modal.classList.add('hidden');
         modal.classList.remove('flex');
     }
+
+    // Disable options for plans that already exist
+    document.addEventListener('DOMContentLoaded', function() {
+        const existingPlans = Array.from(document.querySelectorAll('tbody tr td:first-child span')).map(span => span.textContent.trim());
+        if (existingPlans.includes('Free')) document.getElementById('opt_free').disabled = true;
+        if (existingPlans.includes('Monthly')) document.getElementById('opt_monthly').disabled = true;
+        if (existingPlans.includes('Yearly')) document.getElementById('opt_yearly').disabled = true;
+    });
 
     document.getElementById('editModal').addEventListener('click', function(e) {
         if (e.target === this) closeEditModal();

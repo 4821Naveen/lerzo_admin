@@ -1,3 +1,5 @@
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (7.1.0)/charset_normalizer (3.4.2) doesn't match a supported version!
+  warnings.warn(
  * Serving Flask app 'app'
  * Debug mode: on
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
@@ -6,130 +8,141 @@
  * Running on http://192.168.29.110:5002
 [33mPress CTRL+C to quit[0m
  * Restarting with stat
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (7.1.0)/charset_normalizer (3.4.2) doesn't match a supported version!
+  warnings.warn(
  * Debugger is active!
- * Debugger PIN: 393-374-216
-127.0.0.1 - - [09/May/2026 20:19:35] "[32mGET /dashboard HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:19:35] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:19:42] "[32mPOST /login HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:19:42] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:21:35] "[32mGET /leads HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:21:35] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:21:41] "[32mPOST /login HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:21:41] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
-127.0.0.1 - - [09/May/2026 20:21:44] "[35m[1mGET /leads HTTP/1.1[0m" 500 -
-127.0.0.1 - - [09/May/2026 20:21:45] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:21:46] "[35m[1mGET /users HTTP/1.1[0m" 500 -
-127.0.0.1 - - [09/May/2026 20:21:47] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:21:50] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
-127.0.0.1 - - [09/May/2026 20:21:52] "[35m[1mGET /users HTTP/1.1[0m" 500 -
-127.0.0.1 - - [09/May/2026 20:22:04] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:23:42] "[32mGET /leads HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:23:42] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:23:51] "[32mPOST /login HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:23:51] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:23:53] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:23] "[32mGET /leads HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:40:23] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:29] "[32mPOST /login HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 20:40:29] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:31] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:38] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:39] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:40] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:41] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:42] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:43] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:43] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:44] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:45] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:46] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:48] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:51] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:54] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 20:40:57] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:10:03] "[32mGET /logout HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 21:10:03] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:41:08] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:41:43] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:41:45] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:41:53] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:57:45] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:57:45] "GET /static/images/auth-illustration.svg HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:57:47] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:57:47] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 21:57:47] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:57:47] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 21:57:52] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 21:57:52] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:00:26] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:00:27] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:00:28] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:00:28] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:02:03] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:02:03] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:02:24] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:02:24] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:02:25] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:02:25] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:02:43] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:02:43] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:02:44] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:02:44] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:25] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:25] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:25] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:25] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:25] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:25] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:26] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:26] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:26] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:26] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:26] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:26] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:26] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:26] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:05:36] "[32mPOST /login HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 22:05:36] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:05:39] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:06:11] "[32mGET /logout HTTP/1.1[0m" 302 -
-127.0.0.1 - - [09/May/2026 22:06:11] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:06:11] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [09/May/2026 22:08:30] "GET /login HTTP/1.1" 200 -
-127.0.0.1 - - [09/May/2026 22:08:30] "[36mGET /static/images/auth-illustration.svg HTTP/1.1[0m" 304 -
-127.0.0.1 - - [10/May/2026 12:34:20] "[32mPOST /login HTTP/1.1[0m" 302 -
-127.0.0.1 - - [10/May/2026 12:34:20] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:24] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:27] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:30] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:31] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:31] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:32] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:33] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:34] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:34] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:37] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:34:39] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:10] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:38] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:39] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:52] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:53] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:53] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:37:54] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:38:20] "[32mPOST /leads/2/delete HTTP/1.1[0m" 302 -
-127.0.0.1 - - [10/May/2026 12:38:20] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 12:38:23] "[32mPOST /leads/1/delete HTTP/1.1[0m" 302 -
-127.0.0.1 - - [10/May/2026 12:38:23] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 18:58:36] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 18:58:37] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:32] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:33] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:33] "GET /leads HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:34] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:35] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:35] "GET /dashboard HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:36] "GET /users HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:33:36] "GET /subscriptions HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:36:21] "GET /api-settings/google HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 19:36:56] "GET /api-settings/razorpay HTTP/1.1" 200 -
+ * Debugger PIN: 555-776-238
+127.0.0.1 - - [11/May/2026 13:20:55] "POST /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:20:55] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:20:55] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:21:57] "POST /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:21:57] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:21:57] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:22:08] "POST /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:22:09] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:22:09] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:22:32] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1341, in handle_user_exception
+    return self.handle_http_exception(e)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1281, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/app.py", line 54, in not_found_error
+    return render_template("error.html", error="The requested page was not found."), 404
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/templates/error.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/templates/base.html", line 116, in top-level template code
+    <a href="{{ url_for('users') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if 'users' in request.endpoint %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+    ^^^^^^^^^
+TypeError: argument of type 'NoneType' is not a container or iterable
+127.0.0.1 - - [11/May/2026 13:24:02] "POST /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:24:02] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:24:02] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1341, in handle_user_exception
+    return self.handle_http_exception(e)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/app.py", line 1281, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/app.py", line 54, in not_found_error
+    return render_template("error.html", error="The requested page was not found."), 404
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/templates/error.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/templates/base.html", line 123, in top-level template code
+    <a href="{{ url_for('users') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if 'users' in request.endpoint %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+    ^^^^^^^^^
+TypeError: argument of type 'NoneType' is not a container or iterable
+127.0.0.1 - - [11/May/2026 13:24:02] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:08] "POST /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:08] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:08] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:09] "GET /users HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:09] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:10] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:10] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:10] "GET /users HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:10] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:11] "GET /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:11] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:12] "GET /leads HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:12] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:12] "GET /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:12] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:14] "GET /subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [11/May/2026 13:26:14] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [11/May/2026 13:26:14] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
