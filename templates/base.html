@@ -147,6 +147,11 @@
                         <i data-lucide="key" class="w-5 h-5"></i>
                         <span class="font-bold text-sm">Google & Firebase</span>
                     </a>
+
+                    <a href="{{ url_for('desktop_settings') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl transition-all group {% if request.endpoint == 'desktop_settings' %}sidebar-active{% else %}text-gray-500 hover:bg-gray-50 hover:text-gray-900{% endif %}">
+                        <i data-lucide="monitor" class="w-5 h-5"></i>
+                        <span class="font-bold text-sm">Desktop App</span>
+                    </a>
                 </div>
             </nav>
 

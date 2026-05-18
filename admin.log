@@ -146,3 +146,25 @@ TypeError: argument of type 'NoneType' is not a container or iterable
 127.0.0.1 - - [11/May/2026 13:26:14] "GET /subscriptions HTTP/1.1" 200 -
 127.0.0.1 - - [11/May/2026 13:26:14] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
 127.0.0.1 - - [11/May/2026 13:26:14] "[36mGET /static/images/lezo-logo.png HTTP/1.1[0m" 304 -
+ * Detected change in '/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/app.py', reloading
+ * Restarting with stat
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (7.1.0)/charset_normalizer (3.4.2) doesn't match a supported version!
+  warnings.warn(
+ * Debugger is active!
+ * Debugger PIN: 555-776-238
+127.0.0.1 - - [18/May/2026 22:17:35] "HEAD /login HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2026 22:18:45] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/May/2026 22:18:45] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2026 22:18:45] "GET /static/images/lerzo-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2026 22:18:46] "[36mGET /static/images/lerzo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/May/2026 22:18:49] "GET /desktop-app HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2026 22:18:49] "[36mGET /static/images/lerzo-logo.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [18/May/2026 22:19:39] "[32mPOST /desktop-app HTTP/1.1[0m" 302 -
+127.0.0.1 - - [18/May/2026 22:19:39] "GET /desktop-app HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2026 22:19:39] "[36mGET /static/images/lerzo-logo.png HTTP/1.1[0m" 304 -
+ * Detected change in '/Users/naveenraj/Documents/Lerzo-main/lerzo_admin-main/app.py', reloading
+ * Restarting with stat
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (7.1.0)/charset_normalizer (3.4.2) doesn't match a supported version!
+  warnings.warn(
+ * Debugger is active!
+ * Debugger PIN: 555-776-238

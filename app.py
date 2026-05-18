@@ -17,6 +17,7 @@ import requests
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = os.getenv("ADMIN_PANEL_SECRET", "change_this_secret")
+app.config['MAX_CONTENT_LENGTH'] = 512 * 1024 * 1024
 
 # API Configuration - Use environment variables
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:5001/api/admin")
@@ -326,6 +327,82 @@ def lead_delete(lead_id):
     else:
         flash(result.get("error"), "danger")
     return redirect(url_for("leads"))
+
+@app.route("/desktop-app", methods=["GET", "POST"])
+@login_required
+def desktop_settings():
+    """Manage desktop application installation packages."""
+    if request.method == "POST":
+        # Check if version update is submitted
+        if 'desktop_version' in request.form:
+            version_val = request.form.get('desktop_version', '').strip()
+            if version_val:
+                # Get current settings
+                curr_settings_res = call_api("settings")
+                curr_data = curr_settings_res.get("settings", {})
+                
+                # Update only desktop_version
+                curr_data['desktop_version'] = version_val
+                
+                # Send update POST
+                res = call_api("settings", "POST", curr_data)
+                if res.get("success"):
+                    flash(f"Desktop version updated to {version_val}!", "success")
+                else:
+                    flash(f"Failed to update version: {res.get('error')}", "danger")
+            else:
+                flash("Please enter a valid version number.", "warning")
+            return redirect(url_for("desktop_settings"))
+
+        # Handle file uploads
+        files = {}
+        if 'windows_exe' in request.files:
+            f = request.files['windows_exe']
+            if f.filename != '':
+                files['windows_exe'] = (f.filename, f.read(), f.content_type)
+        if 'mac_dmg' in request.files:
+            f = request.files['mac_dmg']
+            if f.filename != '':
+                files['mac_dmg'] = (f.filename, f.read(), f.content_type)
+                
+        if not files:
+            flash("Please select at least one file to upload.", "danger")
+            return redirect(url_for("desktop_settings"))
+            
+        url = f"{API_BASE_URL}/desktop/upload"
+        headers = {
+            'Authorization': f'Bearer {ADMIN_API_TOKEN}'
+        }
+        try:
+            response = requests.post(url, files=files, headers=headers, timeout=60)
+            if response.status_code == 200:
+                flash(response.json().get("message", "Files uploaded successfully!"), "success")
+            else:
+                flash(f"Upload failed: {response.text}", "danger")
+        except Exception as e:
+            flash(f"Connection error: {str(e)}", "danger")
+            
+        return redirect(url_for("desktop_settings"))
+        
+    result = call_api("desktop/status")
+    settings_res = call_api("settings")
+    desktop_version = settings_res.get("settings", {}).get("desktop_version", "1.0.2")
+    
+    status_data = {}
+    if result.get("success"):
+        status_data = {
+            "windows": result.get("windows"),
+            "mac": result.get("mac"),
+            "desktop_version": desktop_version
+        }
+    else:
+        flash("Could not fetch desktop application status.", "warning")
+        
+    return render_template(
+        "desktop_settings.html",
+        status=status_data,
+        active_page="desktop_settings"
+    )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=True)
