@@ -1,0 +1,13 @@
+.env
+.env.local
+.git
+.gitignore
+venv
+.venv
+__pycache__
+*.pyc
+static/downloads/lerzo-desktop.exe
+static/downloads/lerzo-desktop.dmg
+instance
+uploads
+*.log
